@@ -596,9 +596,6 @@ These future directions represent promising avenues for extending and enhancing 
 
 <div style="text-align: center">⁂</div>
 
-[^1]: https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/50557964/5f1efafa-4f84-4ae3-83a3-24f28476eeb3/paste.txt
-
-[^2]: https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/50557964/e8fc8e5e-3883-40de-815d-8852f3a98a01/paste-2.txt
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
