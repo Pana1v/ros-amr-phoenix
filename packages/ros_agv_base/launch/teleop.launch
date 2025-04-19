@@ -1,0 +1,16 @@
+<launch>
+
+<!-- Joy Controller Driver Node -->
+<group ns="j0">
+    <node name="ds4_joystick" pkg="joy" type="joy_node">
+        <param name="dev" value="/dev/input/js0" />
+    </node>
+</group>
+<!-- Teleoperation Keyboard Node -->
+<node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
+    <param name="repeat_rate" value="20.0" />
+    <param name="key_mapping" value="{'w': [1, 0, 0], 'a': [0, 1, 0], 's': [-1, 0, 0], 'd': [0, -1, 0]}" />
+    <!-- <remap from="cmd_vel" to="cmd_vel_joy"/> -->
+</node>
+
+</launch>

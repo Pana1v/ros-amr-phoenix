@@ -1,0 +1,38 @@
+<launch>
+
+  <arg name="map_file" default="$(find ros_agv_base)/map/primary.yaml"/>
+  <!-- Launch bringup -->
+  <include file="$(find ros_agv_base)/launch/bringup.launch" />
+  <!-- Launch RViz -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d /home/d.rviz" /> -->
+  <!-- Run the map server -->
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Launch AMCL (Adaptive Monte Carlo Localization)-->
+  <!-- <include file="$(find ros_agv_base)/launch/amcl.launch" /> -->
+
+<!-- Lrosrun ds4_driver ds4_driver_node.pyocalization  -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="log">
+    <param name="maxRange" value="8"/>
+    <param name="xmin" value="-12"/>
+    <param name="ymin" value="-12"/>
+    <param name="xmax" value="12"/>
+    <param name="ymax" value="12"/>
+    <param name="delta" value="0.02"/>
+    <param name="particles" value="4"/>
+    <param name="temporalUpdate" value="1.0"/>
+    <param name="angularUpdate" value="0.1"/>
+    <param name="linearUpdate" value="0.05"/>
+    <param name="map_update_interval" value="0.75"/>
+  </node>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+   <rosparam file="$(find ros_agv_base)/config/costmap_common_params.yaml" command="load" /> 
+   <rosparam file="$(find ros_agv_base)/config/local_costmap_params.yaml" command="load" />
+   <rosparam file="$(find ros_agv_base)/config/global_costmap_params.yaml" command="load" /> 
+   <rosparam file="$(find ros_agv_base)/config/base_local_planner_params.yaml" command="load" />
+   <param name="transform_tolerance" value="0.5" />
+   <remap from="cmd_vel" to="cmd_vel" />
+  </node>
+</launch>

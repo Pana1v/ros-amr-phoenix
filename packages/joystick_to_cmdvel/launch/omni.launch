@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="joystick_to_cmdvel" type="omni.py" name="joystick_to_cmdvel" output="screen" />
+</launch>
