@@ -27,7 +27,6 @@
   </a> -->
 
 <h2>ROS Differential Drive Autonomous Mobile Robot</h2>
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
 # Autonomous Mobile Robot Using LIDAR and Robot Operating System (ROS)
 
